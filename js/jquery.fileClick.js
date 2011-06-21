@@ -1,4 +1,5 @@
-/* jQuery fileClick Plugin v1.4
+/*!
+ * jQuery fileClick Plugin v1.4
  * ----------------------------------------------------------
  * Author: Denis Ciccale (dciccale@gmail.com)
  *
