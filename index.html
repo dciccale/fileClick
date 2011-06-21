@@ -1,89 +1,67 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-<head>
-  <meta charset='utf-8'>
+	<head>
+		<title>fileClick demo</title>
+		<link href="css/demo.css" rel="stylesheet" type="text/css" media="screen" />
+		<link href="css/fileClick.css" rel="stylesheet" type="text/css" media="screen" />
+	</head>
 
-  <title>dciccale/fileClick @ GitHub</title>
-
-  <style type="text/css">
-    body {
-      margin-top: 1.0em;
-      background-color: #cce8ff;
-      font-family: "Helvetica,Arial,FreeSans";
-      color: #000000;
-    }
-    #container {
-      margin: 0 auto;
-      width: 700px;
-    }
-    h1 { font-size: 3.8em; color: #331700; margin-bottom: 3px; }
-    h1 .small { font-size: 0.4em; }
-    h1 a { text-decoration: none }
-    h2 { font-size: 1.5em; color: #331700; }
-    h3 { text-align: center; color: #331700; }
-    a { color: #331700; }
-    .description { font-size: 1.2em; margin-bottom: 30px; margin-top: 30px; font-style: italic;}
-    .download { float: right; }
-    pre { background: #000; color: #fff; padding: 15px;}
-    hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
-    .footer { text-align:center; padding-top:30px; font-style: italic; }
-  </style>
-</head>
-
-<body>
-  <a href="http://github.com/dciccale/fileClick"><img style="position: absolute; top: 0; right: 0; border: 0;" src="http://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub" /></a>
-
-  <div id="container">
-
-    <div class="download">
-      <a href="http://github.com/dciccale/fileClick/zipball/master">
-        <img border="0" width="90" src="http://github.com/images/modules/download/zip.png"></a>
-      <a href="http://github.com/dciccale/fileClick/tarball/master">
-        <img border="0" width="90" src="http://github.com/images/modules/download/tar.png"></a>
-    </div>
-
-    <h1><a href="http://github.com/dciccale/fileClick">fileClick</a>
-      <span class="small">by <a href="http://github.com/dciccale">dciccale</a></span></h1>
-
-    <div class="description">
-      Plugin de jQuery para añadir multiples archivos a una lista para luego ser enviados al servidor.
-    </div>
-
-    <h2>Dependencias</h2>
-<p>jQuery</p>
-
-<h2>Licencia</h2>
-<p>Dual licensed under the MIT and GPL licenses:
-<br/>http://www.opensource.org/licenses/mit-license.php
-<br/>http://www.gnu.org/licenses/gpl.html</p>
-<h2>Autor</h2>
-<p>Denis Ciccale (dciccale@gmail.com)
-</p>
-<h2>Contacto</h2>
-<p>
-Denis Ciccale (dciccale@gmail.com)
-<br/>
-César de la Cruz (cesarcruz85@gmail.com)
-</p>
-
-
-    <h2>Descargas</h2>
-    <p>
-      Podes descargar el proyecto en estos formatos:
-      <a href="http://github.com/dciccale/fileClick/zipball/master">zip</a> o
-      <a href="http://github.com/dciccale/fileClick/tarball/master">tar</a>.
-    </p>
-    <p>También podes clonar el proyecto usando <a href="http://git-scm.com">Git</a>
-      con el comando:
-      <pre>$ git clone git://github.com/dciccale/fileClick</pre>
-    </p>
-
-    <div class="footer">
-      La fuente del proyecto lo podes encontrar en GitHub : <a href="http://github.com/dciccale/fileClick">dciccale/fileClick</a>
-    </div>
-
-  </div>
-
-  
-</body>
+	<body>
+		<a href="http://github.com/dciccale/fileClick"><img style="position: absolute; top: 0; right: 0; border: 0;" src="http://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub" /></a>
+		<h1>fileClick demo</h1>
+		
+		<form method="post" action="" id="form">
+			<h2>Primera lista</h2>
+			<div class="jFileClickContainer">
+				<ul class="jUploadList">
+					<li class="jNoAttachments">No hay documentos adjuntos</li>
+				</ul>
+			
+				<div class="jFileInputContainer"></div>
+				<a class="jAttachDocument" href="#" tabindex="-1">Adjuntar documento</a>
+			</div>
+			
+			<div class="separator"></div>
+			
+			<h2>Segunda lista</h2>
+			<div class="jFileClickContainer">
+				<ul class="jUploadList">
+					<li class="jNoAttachments">No hay documentos adjuntos</li>
+				</ul>
+			
+				<div class="jFileInputContainer"></div>
+				<a class="jAttachDocument" href="#" tabindex="-1">Adjuntar documento</a>
+			</div>
+			
+			<div class="separator"></div>
+			
+			<p id="submit"><input type="submit" value="Enviar" /></p>
+		</form>
+		
+		<p><strong>Archivos adjuntos:</strong></p> 
+		<p id="result"></p>
+		
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js" type="text/javascript"></script>
+		<script type="text/javascript">window.jQuery || document.write('<script src="js/jquery.min.js" type="text/javascript">\x3C/script>')</script>
+		<script src="js/jquery.fileClick.min.js" type="text/javascript"></script>
+		<script type="text/javascript">
+			$(function() {
+				$(".jFileClickContainer").fileClick();
+				
+				var result = $("#result"),
+					form = $("#form");
+				
+				form.submit(function(e) {
+					e.preventDefault();
+					var files="";
+					form.find("input:file").each(function() {
+						if(this.value) {
+							files+= this.name + ": " + this.value + "<br/>";
+						}
+					});
+					result.html(files);
+				});
+			});
+		</script>
+	</body>
 </html>
