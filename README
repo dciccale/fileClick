@@ -1,6 +1,5 @@
-jQuery fileClick plugin
-------------------------
+# jQuery fileClick plugin
 
-Attach multiple files to a form before it is sent to the server.
+Attach multiple files to a list in a form before it is sent to the server.
 
-This plugin is Cross-browser (IE6+, FF, Chrome, Safari, Opera)
+This plugin is cross-browser (IE6+ and all versions of FireFox, Chrome, Safari, Opera)
